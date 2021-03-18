@@ -2,6 +2,7 @@ const multer = require('multer');
 const path = require('path');
 const {HTTPException} = require('./errorHandler');
 const MulterMessage = require('../json/multerMessage.json');
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/upload')
@@ -17,6 +18,7 @@ const upload = multer({
     fieldNameSize: 10,          // Field max 10 words
     fileSize: 1024*1024*4,      // The size of file
   },
+
   fileFilter: (req, file, cb) => {
     try {
       const ext = path.extname(file.originalname);
