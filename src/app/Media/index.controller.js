@@ -1,4 +1,5 @@
 const {cloudinaryUploader} = require('../../config/cloudinary');
+
 const uploadSingle = async (req, res, next) => {
   try {
     const data = await cloudinaryUploader(req.file.path);

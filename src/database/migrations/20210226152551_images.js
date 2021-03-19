@@ -1,14 +1,16 @@
 exports.up = function(knex) {
-  return knex.schema.createTable('users', function (table) {
+  return knex.schema.createTable('images', function (table) {
     table.increments().primary();
-    table.string('email').unique();
-    table.string('name');
-    table.string('password');
+    table.string('url');
+    table.string('secure_url');
+    table.string('public_id');
+    table.string('width');
+    table.string('height');
+    table.size('size');
     table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
   });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('users');
+  return knex.schema.dropTable('images');
 };

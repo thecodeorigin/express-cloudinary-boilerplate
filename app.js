@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // Router configuration
 router.forEach(route => {
-  app[route.method]('/v1/' + route.prefix + route.path, ...route.handlers);
+  app[route.method](`/v1/${route.prefix.replace(/\//g, '')}/${route.path.replace(/\//g, '')}`, ...route.handlers);
 });
 
 // 404 error handler
